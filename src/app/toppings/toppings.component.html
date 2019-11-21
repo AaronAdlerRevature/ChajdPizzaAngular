@@ -1,0 +1,20 @@
+<p>toppings works!</p>
+
+    <div style="float:left;">
+        <div *ngFor="let item of allSizes; let i = index">
+            <input type="radio" name="Size" [value]=item.id [checked]="selectedSize===item.id" (click)="updateSize(item.id,i);"/>
+            {{ item.baseSize }} -> {{ item.s_Price | currency}}
+        </div>
+    </div>
+    <div style=" float:right;">
+        <div *ngFor="let item of allToppings; let i = index">
+            <input type="checkbox" [value]=item.name (click)='updateTopping($event,item.name);'/>
+            {{ item.name }}
+        </div>
+    </div>
+    <br/>
+    <div style="float:none;">
+        <h2>
+            {{ totalPrice | currency}}
+        </h2>
+    </div>
