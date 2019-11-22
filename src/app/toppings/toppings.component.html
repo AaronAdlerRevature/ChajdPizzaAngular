@@ -1,5 +1,9 @@
 <p>toppings works!</p>
 
+    <h2>
+        {{ sampleSize.id }} {{ sampleSize.baseSize }} {{ sampleSize.s_Price }}
+    </h2>
+
     <div style="float:left;">
         <div *ngFor="let item of allSizes; let i = index">
             <input type="radio" name="Size" [value]=item.id [checked]="selectedSize===item.id" (click)="updateSize(item.id,i);"/>
@@ -18,3 +22,4 @@
             {{ totalPrice | currency}}
         </h2>
     </div>
+

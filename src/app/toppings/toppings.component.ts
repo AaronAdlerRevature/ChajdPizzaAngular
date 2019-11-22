@@ -4,6 +4,7 @@ import { ToppingsService } from "../toppings.service";
 import { SizesService } from "../sizes.service";
 
 import { Topping } from '../topping';
+import { Size } from '../size';
 
 @Component({
   selector: 'app-toppings',
@@ -28,6 +29,9 @@ export class ToppingsComponent implements OnInit {
 
   constructor(private topData:ToppingsService, private sizeData:SizesService) { }
 
+
+  sampleSize:Size;
+
   ngOnInit() {
     this.toppingCount=0;
     this.currentToppings = [];
@@ -37,6 +41,8 @@ export class ToppingsComponent implements OnInit {
 
     //console.log(this.allSizes[0]);
     //this.updateSize(1,0);
+
+    this.getSize(2);
   }
 
   getToppings(){
@@ -44,7 +50,11 @@ export class ToppingsComponent implements OnInit {
   }
   
   getSizes(){
-    this.sizeData.getSizes().subscribe(inData=>{ /*console.log(inData)*/; this.allSizes = inData; console.log(this.allSizes[0]); this.sizePrice=this.allSizes[this.selectedSize-1].s_Price; this.calculateNewPrice()});
+    this.sizeData.getSizes().subscribe(inData=>{ /*console.log(inData)*/; this.allSizes = inData; /*console.log(this.allSizes[0])*/; this.sizePrice=this.allSizes[this.selectedSize-1].s_Price; this.calculateNewPrice()});
+  }
+
+  getSize(i:number){
+    this.sizeData.getSize(i).subscribe(inData=>{console.log('Size 1:'); console.log(inData);  this.sampleSize = inData });
   }
   
   updateSize(size:number, i:number){
