@@ -19,11 +19,11 @@ getSize(i:number){
 }
 
 getSizeName(i:number){
-  return this.client.get<Size>('http://localhost:10531/api/PizzaTypesAPI/sizes/name/' + i);
+  return this.client.get<string>('http://localhost:10531/api/PizzaTypesAPI/sizes/name/' + i);
 }
 
 getSizePrice(i:number){
-  return this.client.get<Size>('http://localhost:10531/api/PizzaTypesAPI/sizes/price/' + i);
+  return this.client.get<number>('http://localhost:10531/api/PizzaTypesAPI/sizes/price/' + i);
 }
 
 
