@@ -83,7 +83,7 @@ export class ToppingsComponent implements OnInit {
   }
 
   getSF(i:number){
-    this.sfData.getSFPrice(i).subscribe(inData=>{/*console.log('SF :'+inData)*/; this.specialFormula = inData;})
+    this.sfData.getSFPrice(i).subscribe(inData=>{/*console.log('SF :'+inData)*/; this.specialFormula = +inData;})
   }
 
 //#region PRICE CALCULATIONS
