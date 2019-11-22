@@ -15,15 +15,15 @@ getSizes(){
 }
 
 getSize(i:number){
-  return this.client.get<Size>('http://localhost:10531/api/PizzaTypesAPI/sizes/' + 1);
+  return this.client.get<Size>('http://localhost:10531/api/PizzaTypesAPI/sizes/' + i);
 }
 
 getSizeName(i:number){
-  return this.client.get<Size>('http://localhost:10531/api/PizzaTypesAPI/sizes/name/' + 1);
+  return this.client.get<Size>('http://localhost:10531/api/PizzaTypesAPI/sizes/name/' + i);
 }
 
 getSizePrice(i:number){
-  return this.client.get<Size>('http://localhost:10531/api/PizzaTypesAPI/sizes/price/' + 1);
+  return this.client.get<Size>('http://localhost:10531/api/PizzaTypesAPI/sizes/price/' + i);
 }
 
 
