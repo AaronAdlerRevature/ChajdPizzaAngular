@@ -18,6 +18,7 @@ export class TestCustomerPostComponent implements OnInit {
   postResult;
   isSubmitted:boolean=false;
 
+  newCustomerID:number=-1;
   ngOnInit() {
     this.customer = new Customer();
     console.log(this.customer);
@@ -30,9 +31,8 @@ export class TestCustomerPostComponent implements OnInit {
 
   postCustomer(){
     if(this.customer){
-      console.log(this.customer);
       this.customer.stateId = +this.customer.stateId;
-      this.customerData.postCustomer(this.customer).subscribe(ret=>{console.log(ret);});
+      this.customerData.postCustomer(this.customer).subscribe(ret=>{console.log(ret); this.newCustomerID = (ret as Customer).id; if(this.newCustomerID>0){this.isSubmitted=true;} });
     }
   }
 }
