@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../services/order.service';
 import { Order } from '../data-classes/order';
+import { format } from 'url';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-testorder',
@@ -38,6 +40,8 @@ export class TestorderComponent implements OnInit {
 
   postOrder(){
     if(this.currentOrder){
+      this.currentOrder.timePlaced = formatDate(Date.now(), 'yyyy-MM-dd', 'en-US', '+0500') + 'T' + formatDate(Date.now(), 'hh:mm:ss', 'en-US', '+0500') + '.00';
+      console.log(this.currentOrder.timePlaced);
       this.orderData.postOrder(this.currentOrder).subscribe(postResponse=>{this.clearOrder(); this.isCreatingOrder=false; this.selectedOrder = (postResponse as Order).id});
     }
   }
@@ -45,14 +49,14 @@ export class TestorderComponent implements OnInit {
   clearOrder(){
     this.currentOrder = null;
     this.allOrders = null;
-    this.isCreatingOrder = true;
+    this.isCreatingOrder = false;
     this.isViewingOrder = false;
     this.selectedOrder=1;
     this.getAllOrders();
   }
 
   viewOrder(){
-    this.orderData.getOrder(this.selectedOrder).subscribe(inData=>{this.currentOrder = inData; this.isViewingOrder = true});
+    this.orderData.getOrder(this.selectedOrder).subscribe(inData=>{this.currentOrder = inData; this.isViewingOrder = true; console.log(inData)});
   }
 
   updateOrder(){
