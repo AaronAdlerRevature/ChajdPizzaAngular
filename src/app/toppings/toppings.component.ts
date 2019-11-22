@@ -7,6 +7,7 @@ import { SpecialtyPizzaService } from '../specialty-pizza.service';
 import { Topping } from '../topping';
 import { Size } from '../size';
 import { SpecialtyPizza } from '../specialty-pizza';
+import { SFService } from '../sf.service';
 
 @Component({
   selector: 'app-toppings',
@@ -23,8 +24,6 @@ export class ToppingsComponent implements OnInit {
   toppingCount:number = 0;
   toppingPrice:number = 0;
   
-  constToppingPrice:number = 1.5;
-
   selectedSize:number = 1;
   sizePrice:number = 0;
 
@@ -32,7 +31,8 @@ export class ToppingsComponent implements OnInit {
 
   constructor(private topData:ToppingsService,
               private sizeData:SizesService,
-              private specialPizzaData:SpecialtyPizzaService) { }
+              private specialPizzaData:SpecialtyPizzaService,
+              private sfData:SFService) { }
 
 
   sampleSize:Size;
@@ -41,9 +41,13 @@ export class ToppingsComponent implements OnInit {
 
   sampleSpecialPizza:SpecialtyPizza;
 
+  specialFormula:number;
+
   ngOnInit() {
     this.toppingCount=0;
     this.currentToppings = [];
+
+    this.getSF(1);
 
     this.getToppings();
     this.getSizes();  
@@ -75,7 +79,11 @@ export class ToppingsComponent implements OnInit {
   }
 
   getSpecialPizza(i:number){
-    this.specialPizzaData.getSpecialPizza(1).subscribe(inData=>{console.log('Special Pizza'+i+':');console.log(inData); this.sampleSpecialPizza = inData; /*console.log(this.allSpecialPizza[0]);*/});
+    this.specialPizzaData.getSpecialPizza(i).subscribe(inData=>{console.log('Special Pizza'+i+':');console.log(inData); this.sampleSpecialPizza = inData; /*console.log(this.allSpecialPizza[0]);*/});
+  }
+
+  getSF(i:number){
+    this.sfData.getSFPrice(i).subscribe(inData=>{console.log('SF :'+inData); this.specialFormula = inData;})
   }
 
 //#region PRICE CALCULATIONS
@@ -95,16 +103,15 @@ updateTopping(element, top){
     if (i === -1){
       this.currentToppings.push(top);
       ++this.toppingCount;
-      this.toppingPrice += this.constToppingPrice;
+      this.toppingPrice += this.specialFormula;
     }
   }else{
     let i:number = this.currentToppings.indexOf(top);
     if (i !== -1){
         this.currentToppings.splice(i,1);
         --this.toppingCount;
-        this.toppingPrice -= this.constToppingPrice;
+        this.toppingPrice -= this.specialFormula;
       }
-      
     }
     
     console.log(this.currentToppings);
