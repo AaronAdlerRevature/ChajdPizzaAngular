@@ -1,0 +1,67 @@
+<p>testorder works!</p>
+
+
+<input type="button" value="Create New Order" (click)="createOrder()"/>
+<div *ngIf="isCreatingOrder === true">
+       <ul *ngIf="currentOrder" style="list-style-type: none;">
+           <li>
+               <label>ID: </label>
+               <input type="number" [(ngModel)]=currentOrder.Id readonly/>
+           </li>
+           <li>
+               <label>ID: </label>
+               <input type="number" [(ngModel)]=currentOrder.customerId/>
+           </li>
+           <li>
+               <label>ID: </label>
+               <input type="number" [(ngModel)]=currentOrder.netPrice/>
+           </li>
+           <li>
+               <label>ID: </label>
+               <input type="checkbox" [(ngModel)]=currentOrder.isCompleted/>
+           </li>
+           <li>
+               <label>ID: </label>
+               <input type="text" [(ngModel)]=currentOrder.deliveryAddress/>
+           </li>
+       </ul>
+       <input type="button" value="Create Order" (click)="postOrder()"/>
+       <input type="button" value="Close Order View" (click)="clearOrder()"/>
+</div>
+<br/>
+<div *ngIf="allOrders">
+    <input type="button" value="View Order" (click)="viewOrder()"/>
+    <select [(ngModel)]=selectedOrder>
+        <option *ngFor="let order of allOrders" [value]="order.Id">
+            {{ order.Id }}
+        </option>
+    </select>
+
+    <div *ngIf="isViewingOrder===true">
+        <ul *ngIf="currentOrder" style="list-style-type: none;">
+            <li>
+                <label>ID: </label>
+                <input type="number" [(ngModel)]=currentOrder.Id readonly/>
+            </li>
+            
+            <li>
+                <label>ID: </label>
+                <input type="number" [(ngModel)]=currentOrder.customerId readonly/>
+            </li>
+            <li>
+                <label>ID: </label>
+                <input type="number" [(ngModel)]=currentOrder.netPrice/>
+            </li>
+            <li>
+                <label>ID: </label>
+                <input type="checkbox" [(ngModel)]=currentOrder.isCompleted/>
+            </li>
+            <li>
+                <label>ID: </label>
+                <input type="text" [(ngModel)]=currentOrder.deliveryAddress/>
+            </li>
+        </ul>
+        <input type="button" value="Update Order" (click)="updateOrder()"/>
+        <input type="button" value="Close Order View" (click)="clearOrder()"/>
+    </div>
+</div>
