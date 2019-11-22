@@ -24,9 +24,6 @@ export class CustomerService {
   }
 
   postCustomer(c:Customer){
-    console.log(c);
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
-    return this.client.post(URL.name + 'api/customersapi',c,{headers});}
+    return this.client.post(URL.name + 'api/customersapi',c);
+  }
 }
