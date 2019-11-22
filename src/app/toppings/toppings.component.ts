@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ToppingsService } from "../toppings.service";
 import { SizesService } from "../sizes.service";
+import { SpecialtyPizzaService } from '../specialty-pizza.service';
 
 import { Topping } from '../topping';
 import { Size } from '../size';
@@ -27,10 +28,14 @@ export class ToppingsComponent implements OnInit {
 
   totalPrice:number = 0;
 
-  constructor(private topData:ToppingsService, private sizeData:SizesService) { }
+  constructor(private topData:ToppingsService,
+              private sizeData:SizesService,
+              private specialPizzaData:SpecialtyPizzaService) { }
 
 
   sampleSize:Size;
+
+  sampleTopping:Topping;
 
   ngOnInit() {
     this.toppingCount=0;
@@ -43,6 +48,7 @@ export class ToppingsComponent implements OnInit {
     //this.updateSize(1,0);
 
     this.getSize(2);
+    this.getTopping(5);
   }
 
   getToppings(){
@@ -54,7 +60,11 @@ export class ToppingsComponent implements OnInit {
   }
 
   getSize(i:number){
-    this.sizeData.getSize(i).subscribe(inData=>{console.log('Size 1:'); console.log(inData);  this.sampleSize = inData });
+    this.sizeData.getSize(i).subscribe(inData=>{console.log('Size '+i+':'); console.log(inData);  this.sampleSize = inData });
+  }
+
+  getTopping(i:number){
+    this.topData.getTopping(i).subscribe(inData=>{console.log('Topping '+i+':'); console.log(inData); this.sampleTopping=inData});
   }
   
   updateSize(size:number, i:number){
