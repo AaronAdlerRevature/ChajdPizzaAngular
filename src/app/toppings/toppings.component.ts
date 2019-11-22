@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ToppingsService } from "../toppings.service";
-import { SizesService } from "../sizes.service";
-import { SpecialtyPizzaService } from '../specialty-pizza.service';
+import { ToppingsService } from "../services/toppings.service";
+import { SizesService } from "../services/sizes.service";
+import { SpecialtyPizzaService } from '../services/specialty-pizza.service';
 
 import { Topping } from '../topping';
 import { Size } from '../size';
 import { SpecialtyPizza } from '../specialty-pizza';
-import { SFService } from '../sf.service';
+import { SFService } from '../services/sf.service';
 
 @Component({
   selector: 'app-toppings',

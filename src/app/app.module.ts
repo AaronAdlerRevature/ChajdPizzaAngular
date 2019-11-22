@@ -8,10 +8,10 @@ import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
 import { ToppingsComponent } from './toppings/toppings.component';
 
-import { ToppingsService } from "./toppings.service";
-import { SizesService } from "./sizes.service";
-import { SpecialtyPizzaService } from "./specialty-pizza.service";
-import { SFService } from './sf.service';
+import { ToppingsService } from "./services/toppings.service";
+import { SizesService } from "./services/sizes.service";
+import { SpecialtyPizzaService } from "./services/specialty-pizza.service";
+import { SFService } from './services/sf.service';
 
 @NgModule({
   declarations: [

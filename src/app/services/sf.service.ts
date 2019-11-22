@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { SF } from './sf';
-import { URL } from './url';
+import { SF } from '../sf';
+import { URL } from '../url';
 
 @Injectable({
   providedIn: 'root'

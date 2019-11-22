@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Topping } from "./topping";
-import { URL } from './url';
+import { Topping } from "../topping";
+import { URL } from '../url';
 
 @Injectable({
   providedIn: 'root'
