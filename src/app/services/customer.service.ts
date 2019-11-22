@@ -22,4 +22,8 @@ export class CustomerService {
   getCustomerByUserName(name:string){
     return this.client.get<Customer>(URL.name + 'api/customersapi/byuser/' + name);
   }
+
+  postCustomer(c:Customer){
+    return this.client.post<Customer>(URL.name + 'api/customersapi', c);
+  }
 }
