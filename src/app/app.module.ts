@@ -10,6 +10,7 @@ import { ToppingsComponent } from './toppings/toppings.component';
 
 import { ToppingsService } from "./toppings.service";
 import { SizesService } from "./sizes.service";
+import { SpecialtyPizzaService } from "./specialty-pizza.service";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,11 @@ import { SizesService } from "./sizes.service";
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [ToppingsService,SizesService],
+  providers: [
+    ToppingsService,
+    SizesService,
+    SpecialtyPizzaService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
