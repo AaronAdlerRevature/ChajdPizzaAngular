@@ -11,7 +11,20 @@ export class SizesService {
   constructor(private client:HttpClient) { }
 
 getSizes(){
-  return this.client.get('http://localhost:10531/api/PizzaTypesAPI/sizes');
+  return this.client.get<Size>('http://localhost:10531/api/PizzaTypesAPI/sizes');
 }
+
+getSize(i:number){
+  return this.client.get<Size>('http://localhost:10531/api/PizzaTypesAPI/sizes/' + 1);
+}
+
+getSizeName(i:number){
+  return this.client.get<Size>('http://localhost:10531/api/PizzaTypesAPI/sizes/name/' + 1);
+}
+
+getSizePrice(i:number){
+  return this.client.get<Size>('http://localhost:10531/api/PizzaTypesAPI/sizes/price/' + 1);
+}
+
 
 }
