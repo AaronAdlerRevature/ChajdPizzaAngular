@@ -13,13 +13,15 @@ import { SizesService } from "./services/sizes.service";
 import { SpecialtyPizzaService } from "./services/specialty-pizza.service";
 import { SFService } from './services/sf.service';
 import { CustomerService } from './services/customer.service';
+import { TestcustomerComponent } from './testcustomer/testcustomer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MenuComponent,
-    ToppingsComponent
+    ToppingsComponent,
+    TestcustomerComponent
   ],
   imports: [
     BrowserModule,
