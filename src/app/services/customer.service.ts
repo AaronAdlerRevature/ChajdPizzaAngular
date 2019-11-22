@@ -24,6 +24,10 @@ export class CustomerService {
   }
 
   postCustomer(c:Customer){
-    return this.client.post(URL.name + 'api/customersapi',c);
+    return this.client.post(URL.name + 'api/customersapi', c);
+  }
+
+  putCustomer(c:Customer){
+    return this.client.put(URL.name+ + 'api/customersapi/' + c.id, c);
   }
 }
