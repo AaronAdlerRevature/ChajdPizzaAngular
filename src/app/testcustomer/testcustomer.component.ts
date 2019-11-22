@@ -20,7 +20,7 @@ export class TestcustomerComponent implements OnInit {
 
   getCustomer(i:number){
     this.customerData.getCustomer(i).subscribe(inData=>{
-                                              this.stateData.getStateName(inData.stateID).subscribe(secondData=>{console.log(secondData); inData.state = secondData});
+                                              this.stateData.getStateName(inData.stateId).subscribe(secondData=>{console.log(secondData); inData.state = secondData});
                                               console.log(inData); 
                                               console.log(inData.city); 
                                               console.log(inData.userName); 

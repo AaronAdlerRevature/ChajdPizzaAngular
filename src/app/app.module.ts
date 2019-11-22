@@ -15,6 +15,7 @@ import { SpecialtyPizzaService } from "./services/specialty-pizza.service";
 import { SFService } from './services/sf.service';
 import { CustomerService } from './services/customer.service';
 import { TestcustomerComponent } from './testcustomer/testcustomer.component';
+import { TestCustomerPostComponent } from './test-customer-post/test-customer-post.component';
 import { SpecialorderComponent } from './specialorder/specialorder.component';
 
 @NgModule({
@@ -23,6 +24,8 @@ import { SpecialorderComponent } from './specialorder/specialorder.component';
     HomeComponent,
     MenuComponent,
     ToppingsComponent,
+    TestcustomerComponent,
+    TestCustomerPostComponent
     TestcustomerComponent,
     SpecialorderComponent
   ],

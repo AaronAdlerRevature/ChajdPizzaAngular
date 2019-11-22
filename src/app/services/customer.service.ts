@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 import { Customer } from '../data-classes/customer';
 import { URL } from '../url';
@@ -24,6 +24,9 @@ export class CustomerService {
   }
 
   postCustomer(c:Customer){
-    return this.client.post<Customer>(URL.name + 'api/customersapi', c);
-  }
+    console.log(c);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.client.post(URL.name + 'api/customersapi',c,{headers});}
 }
