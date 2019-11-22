@@ -15,6 +15,7 @@ import { SpecialtyPizzaService } from "./services/specialty-pizza.service";
 import { SFService } from './services/sf.service';
 import { CustomerService } from './services/customer.service';
 import { TestcustomerComponent } from './testcustomer/testcustomer.component';
+import { SpecialorderComponent } from './specialorder/specialorder.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { TestcustomerComponent } from './testcustomer/testcustomer.component';
     HomeComponent,
     MenuComponent,
     ToppingsComponent,
-    TestcustomerComponent
+    TestcustomerComponent,
+    SpecOrderComponent,
+    SpecialorderComponent
   ],
   imports: [
     BrowserModule,
