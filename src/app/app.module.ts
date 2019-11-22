@@ -17,6 +17,7 @@ import { CustomerService } from './services/customer.service';
 import { TestcustomerComponent } from './testcustomer/testcustomer.component';
 import { TestCustomerPostComponent } from './test-customer-post/test-customer-post.component';
 import { SpecialorderComponent } from './specialorder/specialorder.component';
+import { OrderService } from './services/order.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { SpecialorderComponent } from './specialorder/specialorder.component';
     ToppingsComponent,
     TestcustomerComponent,
     TestCustomerPostComponent,
-    SpecialorderComponent
+    SpecialorderComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +41,7 @@ import { SpecialorderComponent } from './specialorder/specialorder.component';
     SpecialtyPizzaService,
     SFService,
     CustomerService,
+    OrderService,
   ],
   bootstrap: [AppComponent]
 })

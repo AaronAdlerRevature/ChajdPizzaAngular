@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { SF } from '../data-classes/sf';
 import { URL } from '../url';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,6 @@ export class SFService {
   }
 
   getSFPrice(i:number){
-    return this.client.get<number>(URL.name + 'api/PizzaTypesAPI/sf/price/' + i);
+    return this.client.get(URL.name + 'api/PizzaTypesAPI/sf/price/' + i, {responseType: 'text'});
   }
 }
