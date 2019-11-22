@@ -26,11 +26,15 @@ export class OrderService {
     return this.client.get(URL.name + 'api/ordersapi/checkmultbycust/' + i, {responseType: 'text'});
   }
 
+  postOrder(o:Order){
+    return this.client.post(URL.name + 'api/ordersapi/', o);
+  }
+
   updateOrder(o:Order){
-    return this.client.put(URL.name + 'api/ordersapi/' + o.Id, o);
+    return this.client.put(URL.name + 'api/ordersapi/' + o.id, o);
   }
 
   deleteOrder(o:Order){
-    return this.client.delete(URL.name + 'api/ordersapi/' + o.Id);
+    return this.client.delete(URL.name + 'api/ordersapi/' + o.id);
   }
 }

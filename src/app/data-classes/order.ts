@@ -1,10 +1,21 @@
 export class Order {
-         Id:number; 
-         CustomerId:number;
-         NetPrice:number;
+         id:number; 
+         customerId:number;
+         netPrice:number;
          isCompleted:boolean; 
-         TimePlaced:any;
-         DeliveryAddress:string;
-         Customer:any;
-         OrderDetails:any;
+         timePlaced:any;
+         deliveryAddress:string;
+         customer:any;
+         orderDetails:any;
+
+         constructor(){
+             this.id=0;
+             this.customerId=1;
+             this.netPrice=0;
+             this.isCompleted=false;
+             this.timePlaced=null;
+             this.deliveryAddress="";
+             this.customer=null;
+             this.orderDetails=null;
+         }
 }

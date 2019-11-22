@@ -18,6 +18,7 @@ import { TestcustomerComponent } from './testcustomer/testcustomer.component';
 import { TestCustomerPostComponent } from './test-customer-post/test-customer-post.component';
 import { SpecialorderComponent } from './specialorder/specialorder.component';
 import { OrderService } from './services/order.service';
+import { TestorderComponent } from './testorder/testorder.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { OrderService } from './services/order.service';
     TestcustomerComponent,
     TestCustomerPostComponent,
     SpecialorderComponent,
+    TestorderComponent,
   ],
   imports: [
     BrowserModule,
