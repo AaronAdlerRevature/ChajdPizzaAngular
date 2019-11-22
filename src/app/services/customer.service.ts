@@ -31,4 +31,9 @@ export class CustomerService {
     c.stateID = +c.stateID;
     return this.client.put(URL.name + 'api/customersapi/' + c.id, c);
   }
+
+  deleteCustoemr(c:Customer){
+    c.stateID = +c.stateID;
+    return this.client.delete(URL.name +'api/customersapi/' + c.id);
+  }
 }

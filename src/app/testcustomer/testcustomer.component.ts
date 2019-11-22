@@ -44,4 +44,9 @@ export class TestcustomerComponent implements OnInit {
   clearCustomer(){
     this.currentCustomer=null;
   }
+
+  removeCustomer(){
+    this.customerData.deleteCustoemr(this.currentCustomer).subscribe(deleteRespone=>{console.log(deleteRespone)});
+    this.clearCustomer();
+  }
 }
