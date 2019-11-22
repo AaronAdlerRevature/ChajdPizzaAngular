@@ -20,10 +20,10 @@ export class StatesService {
   }
 
   getStateName(i:number){
-    return this.client.get<string>(URL.name + 'api/stateapi/name/' + i);
+    return this.client.get(URL.name + 'api/stateapi/name/' + i, {responseType: 'text'});
   }
 
   getStateAbbreviation(i:number){
-    return this.client.get<string>(URL.name + 'api/stateapi/abbr/' + i);
+    return this.client.get(URL.name + 'api/stateapi/abbr/' + i, {responseType: 'text'});
   }
 }
