@@ -28,6 +28,7 @@ export class CustomerService {
   }
 
   putCustomer(c:Customer){
-    return this.client.put(URL.name+ + 'api/customersapi/' + c.id, c);
+    c.stateID = +c.stateID;
+    return this.client.put(URL.name + 'api/customersapi/' + c.id, c);
   }
 }

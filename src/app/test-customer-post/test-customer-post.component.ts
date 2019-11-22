@@ -31,7 +31,7 @@ export class TestCustomerPostComponent implements OnInit {
 
   postCustomer(){
     if(this.customer){
-      this.customer.stateId = +this.customer.stateId;
+      this.customer.stateID = +this.customer.stateID;
       this.customerData.postCustomer(this.customer).subscribe(ret=>{console.log(ret); this.newCustomerID = (ret as Customer).id; if(this.newCustomerID>0){this.isSubmitted=true;} });
     }
   }

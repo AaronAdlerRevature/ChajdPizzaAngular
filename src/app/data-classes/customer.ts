@@ -4,7 +4,7 @@ export class Customer {
     name:string;
     street:string;
     city:string;
-    stateId:number;
+    stateID:number;
     state:any;
     zipCode:number;
 
@@ -14,7 +14,7 @@ export class Customer {
         this.name="";
         this.street="";
         this.city="";
-        this.stateId=1;
+        this.stateID=1;
         this.state=null;
         this.zipCode=10000;
     };
