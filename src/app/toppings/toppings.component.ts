@@ -67,23 +67,23 @@ export class ToppingsComponent implements OnInit {
   }
 
   getSize(i:number){
-    this.sizeData.getSize(i).subscribe(inData=>{console.log('Size '+i+':'); console.log(inData);  this.sampleSize = inData });
+    this.sizeData.getSize(i).subscribe(inData=>{/*console.log('Size '+i+':')*/; /*console.log(inData)*/;  this.sampleSize = inData });
   }
 
   getTopping(i:number){
-    this.topData.getTopping(i).subscribe(inData=>{console.log('Topping '+i+':'); console.log(inData); this.sampleTopping=inData});
+    this.topData.getTopping(i).subscribe(inData=>{/*console.log('Topping '+i+':')*/; /*console.log(inData)*/; this.sampleTopping=inData});
   }
   
   getSpecialPizzas(){
-    this.specialPizzaData.getSpecialPizzas().subscribe(inData=>{console.log(inData); this.allSpecialPizza = inData; /*console.log(this.allSpecialPizza[0]);*/});
+    this.specialPizzaData.getSpecialPizzas().subscribe(inData=>{/*console.log(inData)*/; this.allSpecialPizza = inData; /*console.log(this.allSpecialPizza[0]);*/});
   }
 
   getSpecialPizza(i:number){
-    this.specialPizzaData.getSpecialPizza(i).subscribe(inData=>{console.log('Special Pizza'+i+':');console.log(inData); this.sampleSpecialPizza = inData; /*console.log(this.allSpecialPizza[0]);*/});
+    this.specialPizzaData.getSpecialPizza(i).subscribe(inData=>{/*console.log('Special Pizza'+i+':')*/;/*console.log(inData)*/; this.sampleSpecialPizza = inData; /*console.log(this.allSpecialPizza[0]);*/});
   }
 
   getSF(i:number){
-    this.sfData.getSFPrice(i).subscribe(inData=>{console.log('SF :'+inData); this.specialFormula = inData;})
+    this.sfData.getSFPrice(i).subscribe(inData=>{/*console.log('SF :'+inData)*/; this.specialFormula = inData;})
   }
 
 //#region PRICE CALCULATIONS
