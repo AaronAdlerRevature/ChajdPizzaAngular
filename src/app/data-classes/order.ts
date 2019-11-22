@@ -3,7 +3,7 @@ export class Order {
          customerId:number;
          netPrice:number;
          isCompleted:boolean; 
-         timePlaced:any;
+         timePlaced:string;
          deliveryAddress:string;
          customer:any;
          orderDetails:any;
