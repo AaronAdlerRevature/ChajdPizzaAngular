@@ -11,6 +11,7 @@ import { ToppingsComponent } from './toppings/toppings.component';
 import { ToppingsService } from "./toppings.service";
 import { SizesService } from "./sizes.service";
 import { SpecialtyPizzaService } from "./specialty-pizza.service";
+import { SFService } from './sf.service';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { SpecialtyPizzaService } from "./specialty-pizza.service";
     ToppingsService,
     SizesService,
     SpecialtyPizzaService,
+    SFService,
   ],
   bootstrap: [AppComponent]
 })
