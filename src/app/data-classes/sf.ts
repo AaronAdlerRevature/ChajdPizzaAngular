@@ -1,4 +1,4 @@
 export class SF {
-    Id:number;
-    Price:number;
+    id:number;
+    price:number;
 }

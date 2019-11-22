@@ -1,5 +1,5 @@
 export class State {
-    ID:number;
-    Name:string;
-    Abbreviation:string;
+    id:number;
+    name:string;
+    abbreviation:string;
 }

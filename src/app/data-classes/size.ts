@@ -1,5 +1,5 @@
 export class Size {
-    Id:number;
-    BaseSize:string;
-    S_Price:number;
+    id:number;
+    baseSize:string;
+    s_Price:number;
 }
