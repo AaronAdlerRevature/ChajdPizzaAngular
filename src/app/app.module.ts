@@ -12,6 +12,7 @@ import { ToppingsService } from "./services/toppings.service";
 import { SizesService } from "./services/sizes.service";
 import { SpecialtyPizzaService } from "./services/specialty-pizza.service";
 import { SFService } from './services/sf.service';
+import { CustomerService } from './services/customer.service';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { SFService } from './services/sf.service';
     SizesService,
     SpecialtyPizzaService,
     SFService,
+    CustomerService,
   ],
   bootstrap: [AppComponent]
 })
