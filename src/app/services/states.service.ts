@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
+
 import { State } from '../data-classes/state';
 import { URL } from '../url';
 
@@ -19,10 +20,10 @@ export class StatesService {
   }
 
   getStateName(i:number){
-    return this.client.get<State>(URL.name + 'api/stateapi/name/' + i);
+    return this.client.get<string>(URL.name + 'api/stateapi/name/' + i);
   }
 
   getStateAbbreviation(i:number){
-    return this.client.get<State>(URL.name + 'api/stateapi/abbr/' + i);
+    return this.client.get<string>(URL.name + 'api/stateapi/abbr/' + i);
   }
 }
