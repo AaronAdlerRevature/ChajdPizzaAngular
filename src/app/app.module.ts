@@ -24,7 +24,6 @@ import { SpecialorderComponent } from './specialorder/specialorder.component';
     MenuComponent,
     ToppingsComponent,
     TestcustomerComponent,
-    SpecOrderComponent,
     SpecialorderComponent
   ],
   imports: [
