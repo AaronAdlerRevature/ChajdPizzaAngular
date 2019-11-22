@@ -1,1 +1,38 @@
 <p>testcustomer works!</p>
+
+
+<div>
+    <label>
+        <h3>
+            Customer ID: {{ customerID }}
+        </h3>
+    </label>
+    <br/>
+    <input type="number" [(ngModel)]="customerID"/>
+    <br/>
+    <input type="button" (click)="getCustomer(customerID)" value="Get Customer"/>
+</div>
+<div>
+    <div *ngIf="currentCustomer">
+        <ul style="text-decoration: none;">
+            <li>
+                ID: {{ currentCustomer.id }}
+            </li>
+            <li>
+                UserName: {{ currentCustomer.userName }}
+            </li>
+            <li>
+                Address: {{ currentCustomer.address }}
+            </li>
+            <li>
+                City: {{ currentCustomer.city }}
+            </li>
+            <li>
+                StateID: {{ currentCustomer.stateID }}
+            </li>
+            <li>
+                ZipCode: {{ currentCustomer.zipCode }}
+            </li>
+        </ul>
+    </div>
+</div>
