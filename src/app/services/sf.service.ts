@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { SF } from '../sf';
+import { SF } from '../data-classes/sf';
 import { URL } from '../url';
 
 @Injectable({

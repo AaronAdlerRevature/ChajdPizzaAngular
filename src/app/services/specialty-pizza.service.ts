@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { SpecialtyPizza } from "../specialty-pizza";
+import { SpecialtyPizza } from "../data-classes/specialty-pizza";
 import { URL } from '../url';
 
 @Injectable({

@@ -4,9 +4,9 @@ import { ToppingsService } from "../services/toppings.service";
 import { SizesService } from "../services/sizes.service";
 import { SpecialtyPizzaService } from '../services/specialty-pizza.service';
 
-import { Topping } from '../topping';
-import { Size } from '../size';
-import { SpecialtyPizza } from '../specialty-pizza';
+import { Topping } from '../data-classes/topping';
+import { Size } from '../data-classes/size';
+import { SpecialtyPizza } from '../data-classes/specialty-pizza';
 import { SFService } from '../services/sf.service';
 
 @Component({

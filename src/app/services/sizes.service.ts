@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Size } from '../size';
+import { Size } from '../data-classes/size';
 import { URL } from '../url';
 
 @Injectable({
