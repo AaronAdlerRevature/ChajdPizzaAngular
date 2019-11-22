@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Size } from './size';
+import { URL } from './url';
 
 @Injectable({
   providedIn: 'root'
@@ -11,19 +12,19 @@ export class SizesService {
   constructor(private client:HttpClient) { }
 
 getSizes(){
-  return this.client.get<Size>('http://localhost:10531/api/PizzaTypesAPI/sizes');
+  return this.client.get<Size>(URL.name + 'api/PizzaTypesAPI/sizes');
 }
 
 getSize(i:number){
-  return this.client.get<Size>('http://localhost:10531/api/PizzaTypesAPI/sizes/' + i);
+  return this.client.get<Size>(URL.name + 'api/PizzaTypesAPI/sizes/' + i);
 }
 
 getSizeName(i:number){
-  return this.client.get<string>('http://localhost:10531/api/PizzaTypesAPI/sizes/name/' + i);
+  return this.client.get<string>(URL.name + 'api/PizzaTypesAPI/sizes/name/' + i);
 }
 
 getSizePrice(i:number){
-  return this.client.get<number>('http://localhost:10531/api/PizzaTypesAPI/sizes/price/' + i);
+  return this.client.get<number>(URL.name + 'api/PizzaTypesAPI/sizes/price/' + i);
 }
 
 
