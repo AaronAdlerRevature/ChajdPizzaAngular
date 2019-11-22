@@ -9,7 +9,13 @@
     <h2>
         Topping
         <br/>
-        {{ sampleTopping.id }} {{ sampleTopping.name }}
+        {{ sampleTopping.id }} {{ sampleTopping.name | uppercase}}
+    </h2>
+
+    <h2>
+        Special Pizza
+        <br/>
+        {{ sampleSpecialPizza.id }}  {{ sampleSpecialPizza.name | uppercase}}  {{ sampleSpecialPizza.price | currency }}  {{ sampleSpecialPizza.description }}
     </h2>
 
     <div style="float:left;">
