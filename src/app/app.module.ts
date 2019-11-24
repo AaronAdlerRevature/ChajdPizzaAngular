@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
 import { ToppingsComponent } from './toppings/toppings.component';
 
+
 import { ToppingsService } from "./services/toppings.service";
 import { SizesService } from "./services/sizes.service";
 import { SpecialtyPizzaService } from "./services/specialty-pizza.service";
@@ -16,6 +17,7 @@ import { SFService } from './services/sf.service';
 import { CustomerService } from './services/customer.service';
 import { TestcustomerComponent } from './testcustomer/testcustomer.component';
 import { SpecialorderComponent } from './specialorder/specialorder.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { SpecialorderComponent } from './specialorder/specialorder.component';
     MenuComponent,
     ToppingsComponent,
     TestcustomerComponent,
-    SpecialorderComponent
+    SpecialorderComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
