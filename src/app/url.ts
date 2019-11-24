@@ -4,5 +4,5 @@ export class Url {
 
 
 export const URL = {
-    name : 'http://localhost:10531/',
+    name : 'http://localhost:55166/',
 };
