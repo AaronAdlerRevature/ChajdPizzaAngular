@@ -22,4 +22,18 @@ export class CustomerService {
   getCustomerByUserName(name:string){
     return this.client.get<Customer>(URL.name + 'api/customersapi/byuser/' + name);
   }
+
+  postCustomer(c:Customer){
+    return this.client.post(URL.name + 'api/customersapi', c);
+  }
+
+  putCustomer(c:Customer){
+    c.stateID = +c.stateID;
+    return this.client.put(URL.name + 'api/customersapi/' + c.id, c);
+  }
+
+  deleteCustoemr(c:Customer){
+    c.stateID = +c.stateID;
+    return this.client.delete(URL.name +'api/customersapi/' + c.id);
+  }
 }

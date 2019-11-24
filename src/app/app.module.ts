@@ -7,15 +7,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
+import { SpecialorderComponent } from './specialorder/specialorder.component';
+
 import { ToppingsComponent } from './toppings/toppings.component';
+import { TestcustomerComponent } from './testcustomer/testcustomer.component';
+import { TestCustomerPostComponent } from './test-customer-post/test-customer-post.component';
+import { TestorderComponent } from './testorder/testorder.component';
 
 import { ToppingsService } from "./services/toppings.service";
 import { SizesService } from "./services/sizes.service";
 import { SpecialtyPizzaService } from "./services/specialty-pizza.service";
 import { SFService } from './services/sf.service';
 import { CustomerService } from './services/customer.service';
-import { TestcustomerComponent } from './testcustomer/testcustomer.component';
-import { SpecialorderComponent } from './specialorder/specialorder.component';
+import { OrderService } from './services/order.service';
+import { OrderdetailsService } from './services/orderdetails.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +29,9 @@ import { SpecialorderComponent } from './specialorder/specialorder.component';
     MenuComponent,
     ToppingsComponent,
     TestcustomerComponent,
-    SpecialorderComponent
+    TestCustomerPostComponent,
+    SpecialorderComponent,
+    TestorderComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +45,8 @@ import { SpecialorderComponent } from './specialorder/specialorder.component';
     SpecialtyPizzaService,
     SFService,
     CustomerService,
+    OrderService,
+    OrderdetailsService,
   ],
   bootstrap: [AppComponent]
 })

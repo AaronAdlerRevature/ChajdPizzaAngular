@@ -20,11 +20,11 @@ getSize(i:number){
 }
 
 getSizeName(i:number){
-  return this.client.get<string>(URL.name + 'api/PizzaTypesAPI/sizes/name/' + i);
+  return this.client.get(URL.name + 'api/PizzaTypesAPI/sizes/name/' + i, {responseType: 'text'});
 }
 
 getSizePrice(i:number){
-  return this.client.get<number>(URL.name + 'api/PizzaTypesAPI/sizes/price/' + i);
+  return this.client.get(URL.name + 'api/PizzaTypesAPI/sizes/price/' + i, {responseType: 'text'});
 }
 
 
