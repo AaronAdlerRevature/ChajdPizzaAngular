@@ -24,6 +24,6 @@ export class ToppingsService {
   }
 
   getToppingName(i:number){
-    return this.client.get<Topping>(URL.name + 'api/PizzaTypesAPI/toppings/name/' + i);
+    return this.client.get(URL.name + 'api/PizzaTypesAPI/toppings/name/' + i, {responseType: 'text'});
   }
 }
