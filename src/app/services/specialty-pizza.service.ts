@@ -20,15 +20,15 @@ export class SpecialtyPizzaService {
   }
 
   getSpecialPizzaName(i:number){
-    return this.client.get(URL.name +'api/PizzaTypesAPI/special/name/' + i, {responseType: 'text'});
+    return this.client.get<string>(URL.name +'api/PizzaTypesAPI/special/name/' + i);
   }
 
   getSpecialPizzaDescription(i:number){
-    return this.client.get(URL.name +'api/PizzaTypesAPI/special/desc/' + i, {responseType: 'text'});
+    return this.client.get<string>(URL.name +'api/PizzaTypesAPI/special/desc/' + i);
   }
 
   getSpecialPizzaPrice(i:number){
-    return this.client.get(URL.name +'api/PizzaTypesAPI/special/price/' + i, {responseType: 'text'});
+    return this.client.get<number>(URL.name +'api/PizzaTypesAPI/special/price/' + i);
   }
 
 }
