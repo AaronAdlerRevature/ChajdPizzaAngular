@@ -9,7 +9,7 @@
     "lint": "ng lint",  
     "e2e": "ng e2e",  
     "prod-build-dev": "ng build -prod",  
-    "prod-build-staging": "ng build --prod --configuration=staging --build-optimizer"  
+    "prod-build-staging": "ng build --prod --configuration=staging"  
 }  ,
   "private": true,
   "dependencies": {
