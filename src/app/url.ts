@@ -4,5 +4,5 @@ export class Url {
 
 
 export const URL = {
-    name : 'http://localhost:55166/',
+    name : 'https://chajdpizza.azurewebsites.net/',
 };
