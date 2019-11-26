@@ -33,12 +33,12 @@ describe('SizesService', () => {
     })
   });
 
-  it('should be created', 
-  inject([HttpTestingController, SizesService], 
-    (mockHttp: HttpTestingController, testService: SizesService) => {
-    const service: SizesService = TestBed.get(SizesService);
-    expect(service).toBeTruthy();
-  }));
+  it('should be created',
+    inject([HttpTestingController, SizesService],
+      (mockHttp: HttpTestingController, testService: SizesService) => {
+        const service: SizesService = TestBed.get(SizesService);
+        expect(service).toBeTruthy();
+      }));
 
   it('should get all pizza sizes',
     inject([HttpTestingController, SizesService],
@@ -65,6 +65,25 @@ describe('SizesService', () => {
 
         // Fill request response.
         request.flush(testData);
+      }));
+
+  it('should get pizza size 1',
+    inject([HttpTestingController, SizesService],
+      (mockHttp: HttpTestingController, testService: SizesService) => {
+        // Mock call to HttpContext.
+        testService.getSize(1).subscribe(inData => {
+          // Check response data.
+          expect(inData.id).toBe(1);
+          expect(inData.baseSize).toBe('Small');
+          expect(inData.s_Price).toBe(3.99);
+        });
+
+        // Check request data.
+        const request = mockHttp.expectOne(URL.name + 'api/PizzaTypesAPI/sizes/1');
+        expect(request.request.method).toEqual('GET');
+
+        // Fill request response.
+        request.flush(testData[0]);
       }));
 
   afterEach(inject([HttpTestingController], (httpMock: HttpTestingController) => {
