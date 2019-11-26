@@ -7,7 +7,7 @@ import { State } from '../data-classes/state';
 
 describe('StatesService', () => {
 
-  let testData;
+  let testData:State[];
 
   beforeEach(() => {
     TestBed.configureTestingModule({
