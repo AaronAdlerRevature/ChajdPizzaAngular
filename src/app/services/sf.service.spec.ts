@@ -72,6 +72,23 @@ describe('SFService', () => {
         request.flush(testData[0]);
       }));
 
+  it('should get SF 1 price',
+    inject([HttpTestingController, SFService],
+      (mockHttp: HttpTestingController, testService: SFService) => {
+        // Mock call to HttpContext.
+        testService.getSFPrice(1).subscribe(inData => {
+          // Check response data.
+          expect(+inData).toBe(1.50);
+        });
+
+        // Check request data.
+        const request = mockHttp.expectOne(URL.name + 'api/PizzaTypesAPI/sf/price/1');
+        expect(request.request.method).toEqual('GET');
+
+        // Fill request response.
+        request.flush(testData[0].price);
+      }));
+
   afterEach(inject([HttpTestingController], (httpMock: HttpTestingController) => {
     httpMock.verify();
   }));
