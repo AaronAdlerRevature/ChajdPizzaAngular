@@ -33,6 +33,27 @@ describe('SFService', () => {
         expect(service).toBeTruthy();
       }));
 
+  it('should get all SF sizes',
+    inject([HttpTestingController, SFService],
+      (mockHttp: HttpTestingController, testService: SFService) => {
+        // Mock call to HttpContext.
+        testService.getSFs().subscribe(inData => {
+          // Check response data.
+          expect(inData[0].id).toBe(1);
+          expect(inData[0].price).toBe(1.50);
+
+          expect(inData[1].id).toBe(2);
+          expect(inData[1].price).toBe(3.00);
+        });
+
+        // Check request data.
+        const request = mockHttp.expectOne(URL.name + 'api/PizzaTypesAPI/sf');
+        expect(request.request.method).toEqual('GET');
+
+        // Fill request response.
+        request.flush(testData);
+      }));
+
   afterEach(inject([HttpTestingController], (httpMock: HttpTestingController) => {
     httpMock.verify();
   }));
