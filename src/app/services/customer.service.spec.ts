@@ -200,6 +200,22 @@ describe('CustomerService', () => {
         request[0].flush(testData[0]);
       }));
 
+  it('should delete customer 1',
+    inject([HttpTestingController, CustomerService],
+      (mockHttp: HttpTestingController, testService: CustomerService) => {
+        // Mock call to HttpContext.
+        testService.deleteCustomer(testData[0]).subscribe(inData => {
+          expect(inData).toBeNull();
+        });
+
+        // Check request data.
+        const request = mockHttp.match((req) => {
+          return req.url.match(URL.name + 'api/customersapi/1') && req.method === 'DELETE';
+        });
+        // Fill request response.
+        request[0].flush(null);
+      }));
+
   afterEach(inject([HttpTestingController], (httpMock: HttpTestingController) => {
     httpMock.verify();
   }));
