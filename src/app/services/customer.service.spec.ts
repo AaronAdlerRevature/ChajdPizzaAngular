@@ -176,6 +176,30 @@ describe('CustomerService', () => {
         request.flush(4);
       }));
 
+  it('should put customer 1',
+    inject([HttpTestingController, CustomerService],
+      (mockHttp: HttpTestingController, testService: CustomerService) => {
+        // Mock call to HttpContext.
+        testService.putCustomer(testData[0]).subscribe(inData => {
+          // Check response data.
+          expect((inData as Customer).id).toBe(1);
+          expect((inData as Customer).userName).toBe('John@Doe.Com');
+          expect((inData as Customer).name).toBe('John Doe');
+          expect((inData as Customer).street).toBe('123 A Street');
+          expect((inData as Customer).city).toBe('Here');
+          expect((inData as Customer).stateID).toBe(1);
+          expect((inData as Customer).state).toBeNull();
+          expect((inData as Customer).zipCode).toBe(12345);
+        });
+
+        // Check request data.
+        const request = mockHttp.match((req) => {
+          return req.url.match(URL.name + 'api/customersapi/1') && req.method === 'PUT';
+        });
+        // Fill request response.
+        request[0].flush(testData[0]);
+      }));
+
   afterEach(inject([HttpTestingController], (httpMock: HttpTestingController) => {
     httpMock.verify();
   }));
