@@ -127,6 +127,23 @@ describe('SpecialtyPizzaService', () => {
         request.flush(testData[0].price);
       }));
 
+  it('should get specialty pizza 1 name',
+    inject([HttpTestingController, SpecialtyPizzaService],
+      (mockHttp: HttpTestingController, testService: SpecialtyPizzaService) => {
+        // Mock call to HttpContext.
+        testService.getSpecialPizzaDescription(1).subscribe(inData => {
+          // Check response data.
+          expect(inData).toBe('StuffA');
+        });
+
+        // Check request data.
+        const request = mockHttp.expectOne(URL.name + 'api/PizzaTypesAPI/special/desc/1');
+        expect(request.request.method).toEqual('GET');
+
+        // Fill request response.
+        request.flush(testData[0].description);
+      }));
+
   afterEach(inject([HttpTestingController], (httpMock: HttpTestingController) => {
     httpMock.verify();
   }));
