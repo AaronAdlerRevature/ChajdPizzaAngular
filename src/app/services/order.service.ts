@@ -19,7 +19,7 @@ export class OrderService {
   }
 
   getOrderByCustomerID(i:number){
-    return this.client.get(URL.name + 'api/ordersapi/bycust/' + i);
+    return this.client.get<Order>(URL.name + 'api/ordersapi/bycust/' + i);
   }
 
   checkMultipleOrdersOpen(i:number){
