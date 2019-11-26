@@ -4,6 +4,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { OrderdetailsService } from './orderdetails.service';
 import { URL } from '../url';
 import { Orderdetail } from '../data-classes/orderdetail';
+import { debug } from 'util';
 
 describe('OrderdetailsService', () => {
 
@@ -153,6 +154,45 @@ describe('OrderdetailsService', () => {
 
         // Fill request response.
         request.flush(testData[1]);
+      }));
+
+  it('should post order detail',
+    inject([HttpTestingController, OrderdetailsService],
+      (mockHttp: HttpTestingController, testService: OrderdetailsService) => {
+
+        let newData: Orderdetail =
+        {
+          id: 4,
+          ordersId: 3,
+          sizeId: 1,
+          toppingsSelected: 'A,B',
+          toppingsCount: 2,
+          price: 15.99,
+          specialRequest: 'YES',
+          orders: null,
+          size: null,
+        };
+
+        // Mock call to HttpContext.
+        testService.postOrderDetail(newData).subscribe(inData => {
+          // Check response data.
+          expect(inData.id).toBe(1);
+          expect(inData.ordersId).toBe(1);
+          expect(inData.sizeId).toBe(1);
+          expect(inData.toppingsSelected).toBe('A,B,C');
+          expect(inData.toppingsCount).toBe(3);
+          expect(inData.price).toBe(10.99);
+          expect(inData.specialRequest).toBe('None');
+          expect(inData.orders).toBeNull();
+          expect(inData.size).toBeNull();
+        });
+
+        // Check request data.
+        const request = mockHttp.expectOne(URL.name + 'api/orderdetailsapi');
+        expect(request.request.method).toEqual('POST');
+
+        // Fill request response.
+        request.flush(testData[0]);
       }));
 
   afterEach(inject([HttpTestingController], (httpMock: HttpTestingController) => {
