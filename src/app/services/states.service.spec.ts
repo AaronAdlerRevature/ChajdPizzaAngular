@@ -87,7 +87,22 @@ describe('StatesService', () => {
         request.flush(testData[0]);
       }));
 
- 
+  it('should get state name 1',
+    inject([HttpTestingController, StatesService],
+      (mockHttp: HttpTestingController, testService: StatesService) => {
+        // Mock call to HttpContext.
+        testService.getStateName(1).subscribe(inData => {
+          // Check response data.
+          expect(inData).toBe('Florida');
+        });
+
+        // Check request data.
+        const request = mockHttp.expectOne(URL.name + 'api/stateapi/name/1');
+        expect(request.request.method).toEqual('GET');
+
+        // Fill request response.
+        request.flush(testData[0].name);
+      }));
 
   afterEach(inject([HttpTestingController], (httpMock: HttpTestingController) => {
     httpMock.verify();
