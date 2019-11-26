@@ -147,6 +147,23 @@ describe('OrderService', () => {
         request.flush(testData[2]);
       }));
 
+  it('should check multiple orders open for customer 1',
+    inject([HttpTestingController, OrderService],
+      (mockHttp: HttpTestingController, testService: OrderService) => {
+        // Mock call to HttpContext.
+        testService.checkMultipleOrdersOpen(1).subscribe(inData => {
+          // Check response data.
+          expect(+inData).toBe(1);
+        });
+
+        // Check request data.
+        const request = mockHttp.expectOne(URL.name + 'api/ordersapi/checkmultbycust/1');
+        expect(request.request.method).toEqual('GET');
+
+        // Fill request response.
+        request.flush(1);
+      }));
+
   afterEach(inject([HttpTestingController], (httpMock: HttpTestingController) => {
     httpMock.verify();
   }));
