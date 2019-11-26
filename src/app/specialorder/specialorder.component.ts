@@ -10,15 +10,14 @@ import { SpecialtyPizzaService } from '../services/specialty-pizza.service';
 export class SpecialorderComponent implements OnInit {
 
   constructor(private specialData: SpecialtyPizzaService) {}
-
-  Pizzas: SpecialtyPizza[];
-
-
+  pizzasGrab: SpecialtyPizza[] = [];
 
   ngOnInit() {
     this.specialData.getSpecialPizzas().subscribe(
       result => {
-      console.log(result);
+      result.forEach(element => {
+        this.pizzasGrab.push(element);
+      });
     }
     );
   }
