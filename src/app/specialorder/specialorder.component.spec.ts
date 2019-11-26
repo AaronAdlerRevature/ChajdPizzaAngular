@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SpecialorderComponent } from './specialorder.component';
 
-describe('SpecialorderComponent', () => {
+xdescribe('SpecialorderComponent', () => {
   let component: SpecialorderComponent;
   let fixture: ComponentFixture<SpecialorderComponent>;
 
