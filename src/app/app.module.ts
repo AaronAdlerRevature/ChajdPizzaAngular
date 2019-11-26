@@ -21,6 +21,7 @@ import { SFService } from './services/sf.service';
 import { CustomerService } from './services/customer.service';
 import { OrderService } from './services/order.service';
 import { OrderdetailsService } from './services/orderdetails.service';
+import { OrderdetailComponent } from './orderdetail/orderdetail.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { OrderdetailsService } from './services/orderdetails.service';
     TestCustomerPostComponent,
     SpecialorderComponent,
     TestorderComponent,
+    OrderdetailComponent,
   ],
   imports: [
     BrowserModule,
