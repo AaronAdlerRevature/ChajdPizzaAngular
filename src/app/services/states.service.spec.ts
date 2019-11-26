@@ -104,6 +104,23 @@ describe('StatesService', () => {
         request.flush(testData[0].name);
       }));
 
+  it('should get state abbreviation 1',
+    inject([HttpTestingController, StatesService],
+      (mockHttp: HttpTestingController, testService: StatesService) => {
+        // Mock call to HttpContext.
+        testService.getStateAbbreviation(1).subscribe(inData => {
+          // Check response data.
+          expect(inData).toBe('FL');
+        });
+
+        // Check request data.
+        const request = mockHttp.expectOne(URL.name + 'api/stateapi/abbr/1');
+        expect(request.request.method).toEqual('GET');
+
+        // Fill request response.
+        request.flush(testData[0].abbreviation);
+      }));
+
   afterEach(inject([HttpTestingController], (httpMock: HttpTestingController) => {
     httpMock.verify();
   }));
