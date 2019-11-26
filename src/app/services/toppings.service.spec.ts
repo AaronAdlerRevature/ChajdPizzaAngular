@@ -61,23 +61,40 @@ describe('ToppingsService', () => {
         request.flush(testData);
       }));
 
-      it('should get topping 1',
-      inject([HttpTestingController, ToppingsService],
-        (mockHttp: HttpTestingController, testService: ToppingsService) => {
-          // Mock call to HttpContext.
-          testService.getTopping(1).subscribe(inData => {
-            // Check response data.
-            expect(inData.id).toBe(1);
-            expect(inData.name).toBe('TopA');
-          });
-  
-          // Check request data.
-          const request = mockHttp.expectOne(URL.name + 'api/PizzaTypesAPI/toppings/1');
-          expect(request.request.method).toEqual('GET');
-  
-          // Fill request response.
-          request.flush(testData[0]);
-        }));
+  it('should get topping 1',
+    inject([HttpTestingController, ToppingsService],
+      (mockHttp: HttpTestingController, testService: ToppingsService) => {
+        // Mock call to HttpContext.
+        testService.getTopping(1).subscribe(inData => {
+          // Check response data.
+          expect(inData.id).toBe(1);
+          expect(inData.name).toBe('TopA');
+        });
+
+        // Check request data.
+        const request = mockHttp.expectOne(URL.name + 'api/PizzaTypesAPI/toppings/1');
+        expect(request.request.method).toEqual('GET');
+
+        // Fill request response.
+        request.flush(testData[0]);
+      }));
+
+  it('should get topping 1 name',
+    inject([HttpTestingController, ToppingsService],
+      (mockHttp: HttpTestingController, testService: ToppingsService) => {
+        // Mock call to HttpContext.
+        testService.getToppingName(1).subscribe(inData => {
+          // Check response data.
+          expect(inData).toBe('TopA');
+        });
+
+        // Check request data.
+        const request = mockHttp.expectOne(URL.name + 'api/PizzaTypesAPI/toppings/name/1');
+        expect(request.request.method).toEqual('GET');
+
+        // Fill request response.
+        request.flush(testData[0].name);
+      }));
 
   afterEach(inject([HttpTestingController], (httpMock: HttpTestingController) => {
     httpMock.verify();
