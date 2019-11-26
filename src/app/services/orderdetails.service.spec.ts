@@ -177,13 +177,13 @@ describe('OrderdetailsService', () => {
         // Mock call to HttpContext.
         testService.postOrderDetail(newData).subscribe(inData => {
           // Check response data.
-          expect(inData.id).toBe(1);
-          expect(inData.ordersId).toBe(1);
+          expect(inData.id).toBe(4);
+          expect(inData.ordersId).toBe(3);
           expect(inData.sizeId).toBe(1);
-          expect(inData.toppingsSelected).toBe('A,B,C');
-          expect(inData.toppingsCount).toBe(3);
-          expect(inData.price).toBe(10.99);
-          expect(inData.specialRequest).toBe('None');
+          expect(inData.toppingsSelected).toBe('A,B');
+          expect(inData.toppingsCount).toBe(2);
+          expect(inData.price).toBe(15.99);
+          expect(inData.specialRequest).toBe('YES');
           expect(inData.orders).toBeNull();
           expect(inData.size).toBeNull();
         });
@@ -193,13 +193,12 @@ describe('OrderdetailsService', () => {
         expect(request.request.method).toEqual('POST');
 
         // Fill request response.
-        request.flush(testData[0]);
+        request.flush(newData);
       }));
 
   it('should put order detail 1',
     inject([HttpTestingController, OrderdetailsService],
       (mockHttp: HttpTestingController, testService: OrderdetailsService) => {
-
         // Mock call to HttpContext.
         testService.putOrderDetail(testData[0]).subscribe(inData => {
           // Check response data.
@@ -222,7 +221,21 @@ describe('OrderdetailsService', () => {
         request[0].flush(testData[0]);
       }));
 
-     
+  it('should delete order detail 1',
+    inject([HttpTestingController, OrderdetailsService],
+      (mockHttp: HttpTestingController, testService: OrderdetailsService) => {
+        // Mock call to HttpContext.
+        testService.deleteOrderDetail(testData[0]).subscribe(inData => {
+          expect(inData).toBeNull();
+        });
+
+        // Check request data.
+        const request = mockHttp.match((req) => {
+          return req.url.match(URL.name + 'api/orderdetailsapi/1') && req.method === 'DELETE';
+        });
+        // Fill request response.
+        request[0].flush(null);
+      }));
 
   afterEach(inject([HttpTestingController], (httpMock: HttpTestingController) => {
     httpMock.verify();
