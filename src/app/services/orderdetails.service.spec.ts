@@ -200,19 +200,6 @@ describe('OrderdetailsService', () => {
     inject([HttpTestingController, OrderdetailsService],
       (mockHttp: HttpTestingController, testService: OrderdetailsService) => {
 
-        let newData: Orderdetail =
-        {
-          id: 1,
-          ordersId: 3,
-          sizeId: 1,
-          toppingsSelected: 'A,B',
-          toppingsCount: 2,
-          price: 15.99,
-          specialRequest: 'YES',
-          orders: null,
-          size: null,
-        };
-
         // Mock call to HttpContext.
         testService.putOrderDetail(testData[0]).subscribe(inData => {
           // Check response data.
@@ -234,6 +221,8 @@ describe('OrderdetailsService', () => {
         // Fill request response.
         request[0].flush(testData[0]);
       }));
+
+     
 
   afterEach(inject([HttpTestingController], (httpMock: HttpTestingController) => {
     httpMock.verify();
