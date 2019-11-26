@@ -11,8 +11,8 @@
         <input type="text" [(ngModel)]="customer.city"/>
     </div>
     <div>
-        <select *ngIf="allStates" [(ngModel)]="customer.stateId">
-            <option *ngFor="let state of allStates" [value]="state.id" >
+        <select *ngIf="allStates" [(ngModel)]="customer.stateID">
+            <option *ngFor="let state of allStates" [value]="state.ID" >
                 {{ state.name }}
             </option>
         </select>
