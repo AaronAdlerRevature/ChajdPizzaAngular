@@ -28,10 +28,10 @@ export class OrderdetailsService {
   }
 
   putOrderDetail(od:Orderdetail){
-    return this.client.put(URL + 'api/orderdetailsapi/' + od.id, od);
+    return this.client.put(URL.name + 'api/orderdetailsapi/' + od.id, od);
   }
 
   deleteOrderDetail(od:Orderdetail){
-    return this.client.delete(URL + 'api/orderdetailsapi/' + od.id);
+    return this.client.delete(URL.name + 'api/orderdetailsapi/' + od.id);
   }
 }
