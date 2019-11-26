@@ -42,6 +42,36 @@ describe('SpecialtyPizzaService', () => {
         expect(service).toBeTruthy();
       }));
 
+      it('should get all toppings',
+    inject([HttpTestingController, SpecialtyPizzaService],
+      (mockHttp: HttpTestingController, testService: SpecialtyPizzaService) => {
+        // Mock call to HttpContext.
+        testService.getSpecialPizzas().subscribe(inData => {
+          // Check response data.
+          expect(inData[0].id).toBe(1);
+          expect(inData[0].name).toBe('SpecialA');
+          expect(inData[0].price).toBe(5.99);
+          expect(inData[0].description).toBe('StuffA');
+
+          expect(inData[1].id).toBe(2);
+          expect(inData[1].name).toBe('SpecialB');
+          expect(inData[1].price).toBe(7.99);
+          expect(inData[1].description).toBe('StuffB');
+
+          expect(inData[2].id).toBe(3);
+          expect(inData[2].name).toBe('SpecialC');
+          expect(inData[2].price).toBe(9.99);
+          expect(inData[2].description).toBe('StuffC');
+        });
+
+        // Check request data.
+        const request = mockHttp.expectOne(URL.name + 'api/PizzaTypesAPI/special');
+        expect(request.request.method).toEqual('GET');
+
+        // Fill request response.
+        request.flush(testData);
+      }));
+
   afterEach(inject([HttpTestingController], (httpMock: HttpTestingController) => {
     httpMock.verify();
   }));
