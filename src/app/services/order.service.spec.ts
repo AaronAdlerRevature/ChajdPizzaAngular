@@ -164,6 +164,36 @@ describe('OrderService', () => {
         request.flush(1);
       }));
 
+  it('should post order',
+    inject([HttpTestingController, OrderService],
+      (mockHttp: HttpTestingController, testService: OrderService) => {
+
+        let newData: Order =
+        {
+          id: 4,
+          customerId: 3,
+          netPrice: 19.99,
+          isCompleted: false,
+          timePlaced: '',
+          deliveryAddress: 'Somewhere',
+          customer: null,
+          orderDetails: null,
+        };
+
+        // Mock call to HttpContext.
+        testService.postOrder(newData).subscribe(inData => {
+          // Check response data.
+          expect(inData).toBe(4);
+        });
+
+        // Check request data.
+        const request = mockHttp.expectOne(URL.name + 'api/ordersapi/');
+        expect(request.request.method).toEqual('POST');
+
+        // Fill request response.
+        request.flush(4);
+      }));
+
   afterEach(inject([HttpTestingController], (httpMock: HttpTestingController) => {
     httpMock.verify();
   }));
