@@ -130,6 +130,31 @@ describe('OrderdetailsService', () => {
         request.flush(testData[0]);
       }));
 
+  it('should get order detail 1',
+    inject([HttpTestingController, OrderdetailsService],
+      (mockHttp: HttpTestingController, testService: OrderdetailsService) => {
+        // Mock call to HttpContext.
+        testService.getOrderDetailByOrderID(2).subscribe(inData => {
+          // Check response data.
+          expect(inData.id).toBe(2);
+          expect(inData.ordersId).toBe(1);
+          expect(inData.sizeId).toBe(3);
+          expect(inData.toppingsSelected).toBe('C,D');
+          expect(inData.toppingsCount).toBe(2);
+          expect(inData.price).toBe(8.99);
+          expect(inData.specialRequest).toBe('None');
+          expect(inData.orders).toBeNull();
+          expect(inData.size).toBeNull();
+        });
+
+        // Check request data.
+        const request = mockHttp.expectOne(URL.name + 'api/orderdetailsapi/DetailsOfOrder/2');
+        expect(request.request.method).toEqual('GET');
+
+        // Fill request response.
+        request.flush(testData[1]);
+      }));
+
   afterEach(inject([HttpTestingController], (httpMock: HttpTestingController) => {
     httpMock.verify();
   }));
