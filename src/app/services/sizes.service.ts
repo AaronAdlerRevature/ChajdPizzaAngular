@@ -9,23 +9,23 @@ import { URL } from '../url';
 })
 export class SizesService {
 
-  constructor(private client:HttpClient) { }
+  constructor(private client: HttpClient) { }
 
-getSizes(){
-  return this.client.get<Size>(URL.name + 'api/PizzaTypesAPI/sizes');
-}
+  getSizes() {
+    return this.client.get<Size>(URL.name + 'api/PizzaTypesAPI/sizes');
+  }
 
-getSize(i:number){
-  return this.client.get<Size>(URL.name + 'api/PizzaTypesAPI/sizes/' + i);
-}
+  getSize(i: number) {
+    return this.client.get<Size>(URL.name + 'api/PizzaTypesAPI/sizes/' + i);
+  }
 
-getSizeName(i:number){
-  return this.client.get(URL.name + 'api/PizzaTypesAPI/sizes/name/' + i, {responseType: 'text'});
-}
+  getSizeName(i: number) {
+    return this.client.get(URL.name + 'api/PizzaTypesAPI/sizes/name/' + i, { responseType: 'text' });
+  }
 
-getSizePrice(i:number){
-  return this.client.get(URL.name + 'api/PizzaTypesAPI/sizes/price/' + i, {responseType: 'text'});
-}
+  getSizePrice(i: number) {
+    return this.client.get(URL.name + 'api/PizzaTypesAPI/sizes/price/' + i, { responseType: 'text' });
+  }
 
 
 }
