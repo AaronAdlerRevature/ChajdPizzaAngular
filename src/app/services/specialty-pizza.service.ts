@@ -12,7 +12,7 @@ export class SpecialtyPizzaService {
   constructor(private client:HttpClient) { }
 
   getSpecialPizzas(){
-    return this.client.get<SpecialtyPizza>(URL.name + 'api/PizzaTypesAPI/special');
+    return this.client.get<SpecialtyPizza[]>(URL.name + 'api/PizzaTypesAPI/special');
   }
 
   getSpecialPizza(i:number){

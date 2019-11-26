@@ -10,9 +10,9 @@ export class MenuComponent implements OnInit {
   deals = [
     {
       imageLink: "./assets/image/bch.jpg",
-      routeLink: "",
+      routeLink: "./test",
       text: "BCH",
-      desc: "",
+      desc: "Grilled chicken breast, BBQ sauce, fresh onions, cheddar, provolone and cheese made with 100% real mozzarella.",
       title: "BCH",
     },
     
@@ -36,7 +36,7 @@ export class MenuComponent implements OnInit {
       imageLink: "./assets/image/veggi.jpg",
       routeLink: "",
       text: "VEGGI",
-      desc: "",
+      desc: "Roasted red peppers, fresh baby spinach, fresh onions, fresh mushrooms, tomatoes, black olives.",
       title: "Veggi",
     },
     
