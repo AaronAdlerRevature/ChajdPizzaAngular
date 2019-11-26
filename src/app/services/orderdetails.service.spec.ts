@@ -5,6 +5,7 @@ import { OrderdetailsService } from './orderdetails.service';
 import { URL } from '../url';
 import { Orderdetail } from '../data-classes/orderdetail';
 import { debug } from 'util';
+import { resource } from 'selenium-webdriver/http';
 
 describe('OrderdetailsService', () => {
 
@@ -193,6 +194,45 @@ describe('OrderdetailsService', () => {
 
         // Fill request response.
         request.flush(testData[0]);
+      }));
+
+  it('should put order detail 1',
+    inject([HttpTestingController, OrderdetailsService],
+      (mockHttp: HttpTestingController, testService: OrderdetailsService) => {
+
+        let newData: Orderdetail =
+        {
+          id: 1,
+          ordersId: 3,
+          sizeId: 1,
+          toppingsSelected: 'A,B',
+          toppingsCount: 2,
+          price: 15.99,
+          specialRequest: 'YES',
+          orders: null,
+          size: null,
+        };
+
+        // Mock call to HttpContext.
+        testService.putOrderDetail(testData[0]).subscribe(inData => {
+          // Check response data.
+          expect((inData as Orderdetail).id).toBe(1);
+          expect((inData as Orderdetail).ordersId).toBe(1);
+          expect((inData as Orderdetail).sizeId).toBe(1);
+          expect((inData as Orderdetail).toppingsSelected).toBe('A,B,C');
+          expect((inData as Orderdetail).toppingsCount).toBe(3);
+          expect((inData as Orderdetail).price).toBe(10.99);
+          expect((inData as Orderdetail).specialRequest).toBe('None');
+          expect((inData as Orderdetail).orders).toBeNull();
+          expect((inData as Orderdetail).size).toBeNull();
+        });
+
+        // Check request data.
+        const request = mockHttp.match((req) => {
+          return req.url.match(URL.name + 'api/orderdetailsapi/1') && req.method === 'PUT';
+        });
+        // Fill request response.
+        request[0].flush(testData[0]);
       }));
 
   afterEach(inject([HttpTestingController], (httpMock: HttpTestingController) => {
