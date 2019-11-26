@@ -122,29 +122,59 @@ describe('CustomerService', () => {
         request.flush(testData[0]);
       }));
 
-      it('should get customer John@Doe.Com',
-      inject([HttpTestingController, CustomerService],
-        (mockHttp: HttpTestingController, testService: CustomerService) => {
-          // Mock call to HttpContext.
-          testService.getCustomerByUserName('John@Doe.Com').subscribe(inData => {
-            // Check response data.
-            expect(inData.id).toBe(1);
-            expect(inData.userName).toBe('John@Doe.Com');
-            expect(inData.name).toBe('John Doe');
-            expect(inData.street).toBe('123 A Street');
-            expect(inData.city).toBe('Here');
-            expect(inData.stateID).toBe(1);
-            expect(inData.state).toBeNull();
-            expect(inData.zipCode).toBe(12345);
-          });
-  
-          // Check request data.
-          const request = mockHttp.expectOne(URL.name + 'api/customersapi/byuser/John@Doe.Com');
-          expect(request.request.method).toEqual('GET');
-  
-          // Fill request response.
-          request.flush(testData[0]);
-        }));
+  it('should get customer John@Doe.Com',
+    inject([HttpTestingController, CustomerService],
+      (mockHttp: HttpTestingController, testService: CustomerService) => {
+        // Mock call to HttpContext.
+        testService.getCustomerByUserName('John@Doe.Com').subscribe(inData => {
+          // Check response data.
+          expect(inData.id).toBe(1);
+          expect(inData.userName).toBe('John@Doe.Com');
+          expect(inData.name).toBe('John Doe');
+          expect(inData.street).toBe('123 A Street');
+          expect(inData.city).toBe('Here');
+          expect(inData.stateID).toBe(1);
+          expect(inData.state).toBeNull();
+          expect(inData.zipCode).toBe(12345);
+        });
+
+        // Check request data.
+        const request = mockHttp.expectOne(URL.name + 'api/customersapi/byuser/John@Doe.Com');
+        expect(request.request.method).toEqual('GET');
+
+        // Fill request response.
+        request.flush(testData[0]);
+      }));
+
+  it('should post customer',
+    inject([HttpTestingController, CustomerService],
+      (mockHttp: HttpTestingController, testService: CustomerService) => {
+
+        let newData: Customer =
+        {
+          id: 4,
+          userName: 'No@One.Com',
+          name: 'NoOne',
+          street: 'Sesame Street',
+          city: 'Nowhere',
+          stateID: 4,
+          state: null,
+          zipCode: 11111,
+        };
+
+        // Mock call to HttpContext.
+        testService.postCustomer(newData).subscribe(inData => {
+          // Check response data.
+          expect(inData).toBe(4);
+        });
+
+        // Check request data.
+        const request = mockHttp.expectOne(URL.name + 'api/customersapi/');
+        expect(request.request.method).toEqual('POST');
+
+        // Fill request response.
+        request.flush(4);
+      }));
 
   afterEach(inject([HttpTestingController], (httpMock: HttpTestingController) => {
     httpMock.verify();
