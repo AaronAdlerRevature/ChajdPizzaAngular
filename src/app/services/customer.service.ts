@@ -24,7 +24,8 @@ export class CustomerService {
   }
 
   postCustomer(c:Customer){
-    return this.client.post(URL.name + 'api/customersapi', c);
+    c.stateID = +c.stateID;
+    return this.client.post(URL.name + 'api/customersapi/', c);
   }
 
   putCustomer(c:Customer){
@@ -32,7 +33,7 @@ export class CustomerService {
     return this.client.put(URL.name + 'api/customersapi/' + c.id, c);
   }
 
-  deleteCustoemr(c:Customer){
+  deleteCustomer(c:Customer){
     c.stateID = +c.stateID;
     return this.client.delete(URL.name +'api/customersapi/' + c.id);
   }
