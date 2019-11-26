@@ -99,29 +99,53 @@ describe('OrderService', () => {
         request.flush(testData);
       }));
 
-      it('should get order 1',
-      inject([HttpTestingController, OrderService],
-        (mockHttp: HttpTestingController, testService: OrderService) => {
-          // Mock call to HttpContext.
-          testService.getOrder(1).subscribe(inData => {
-            // Check response data.
-            expect(inData.id).toBe(1);
-            expect(inData.customerId).toBe(1);
-            expect(inData.netPrice).toBe(5.99);
-            expect(inData.isCompleted).toBe(true);
-            expect(inData.timePlaced).toBe('');
-            expect(inData.deliveryAddress).toBe('Here');
-            expect(inData.customer).toBeNull();
-            expect(inData.orderDetails).toBeNull();
-          });
-  
-          // Check request data.
-          const request = mockHttp.expectOne(URL.name + 'api/ordersapi/1');
-          expect(request.request.method).toEqual('GET');
-  
-          // Fill request response.
-          request.flush(testData[0]);
-        }));
+  it('should get order 1',
+    inject([HttpTestingController, OrderService],
+      (mockHttp: HttpTestingController, testService: OrderService) => {
+        // Mock call to HttpContext.
+        testService.getOrder(1).subscribe(inData => {
+          // Check response data.
+          expect(inData.id).toBe(1);
+          expect(inData.customerId).toBe(1);
+          expect(inData.netPrice).toBe(5.99);
+          expect(inData.isCompleted).toBe(true);
+          expect(inData.timePlaced).toBe('');
+          expect(inData.deliveryAddress).toBe('Here');
+          expect(inData.customer).toBeNull();
+          expect(inData.orderDetails).toBeNull();
+        });
+
+        // Check request data.
+        const request = mockHttp.expectOne(URL.name + 'api/ordersapi/1');
+        expect(request.request.method).toEqual('GET');
+
+        // Fill request response.
+        request.flush(testData[0]);
+      }));
+
+  it('should get order 3 by customer ID',
+    inject([HttpTestingController, OrderService],
+      (mockHttp: HttpTestingController, testService: OrderService) => {
+        // Mock call to HttpContext.
+        testService.getOrderByCustomerID(2).subscribe(inData => {
+          // Check response data.
+          expect(inData.id).toBe(3);
+          expect(inData.customerId).toBe(2);
+          expect(inData.netPrice).toBe(9.99);
+          expect(inData.isCompleted).toBe(false);
+          expect(inData.timePlaced).toBe('');
+          expect(inData.deliveryAddress).toBe('There');
+          expect(inData.customer).toBeNull();
+          expect(inData.orderDetails).toBeNull();
+        });
+
+        // Check request data.
+        const request = mockHttp.expectOne(URL.name + 'api/ordersapi/bycust/2');
+        expect(request.request.method).toEqual('GET');
+
+        // Fill request response.
+        request.flush(testData[2]);
+      }));
 
   afterEach(inject([HttpTestingController], (httpMock: HttpTestingController) => {
     httpMock.verify();
