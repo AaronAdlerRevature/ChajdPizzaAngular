@@ -218,6 +218,22 @@ describe('OrderService', () => {
         request[0].flush(testData[0]);
       }));
 
+  it('should delete order 1',
+    inject([HttpTestingController, OrderService],
+      (mockHttp: HttpTestingController, testService: OrderService) => {
+        // Mock call to HttpContext.
+        testService.deleteOrder(testData[0]).subscribe(inData => {
+          expect(inData).toBeNull();
+        });
+
+        // Check request data.
+        const request = mockHttp.match((req) => {
+          return req.url.match(URL.name + 'api/ordersapi/1') && req.method === 'DELETE';
+        });
+        // Fill request response.
+        request[0].flush(null);
+      }));
+
   afterEach(inject([HttpTestingController], (httpMock: HttpTestingController) => {
     httpMock.verify();
   }));
