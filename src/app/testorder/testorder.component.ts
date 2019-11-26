@@ -4,6 +4,9 @@ import { Order } from '../data-classes/order';
 import { format } from 'url';
 import { formatDate } from '@angular/common';
 
+import { Orderdetail } from '../data-classes/orderdetail';//
+import { OrderdetailsService } from '../services/orderdetails.service';//
+
 @Component({
   selector: 'app-testorder',
   templateUrl: './testorder.component.html',
@@ -16,7 +19,10 @@ export class TestorderComponent implements OnInit {
   isCreatingOrder:boolean=false;
   isViewingOrder:boolean=false;
   currentOrder:Order=null;
-  constructor(private orderData:OrderService) { }
+
+  public orderDetails: Orderdetail[] = []; // 
+
+  constructor(private orderData:OrderService, private orderdetailsService: OrderdetailsService) { }
 
   ngOnInit() {
   this.selectedOrder=1;
@@ -57,6 +63,7 @@ export class TestorderComponent implements OnInit {
 
   viewOrder(){
     this.orderData.getOrder(this.selectedOrder).subscribe(inData=>{this.currentOrder = inData; this.isViewingOrder = true; console.log(inData)});
+    this.orDetails(this.selectedOrder);
   }
 
   updateOrder(){
@@ -64,4 +71,9 @@ export class TestorderComponent implements OnInit {
       this.orderData.updateOrder(this.currentOrder).subscribe(putResponse=>{console.log(putResponse)});
     }
   }
+
+  orDetails(orderId: number){    //
+    this.orderdetailsService.getDetailByOrder(orderId).subscribe(details => this.orderDetails = Object.assign([], details)); 
+  }
+
 }

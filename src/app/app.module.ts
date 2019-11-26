@@ -25,7 +25,7 @@ import { TestcustomerComponent } from './testcustomer/testcustomer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { OrderService } from './services/order.service';
 import { OrderdetailsService } from './services/orderdetails.service';
-import { OrderdetailComponent } from './orderdetail/orderdetail.component';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +39,7 @@ import { OrderdetailComponent } from './orderdetail/orderdetail.component';
     TestCustomerPostComponent,
     SpecialorderComponent,
     TestorderComponent,
-    OrderdetailComponent,
+    
   ],
   imports: [
     BrowserModule,
