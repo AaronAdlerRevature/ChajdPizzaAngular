@@ -98,7 +98,7 @@ describe('CustomerService', () => {
         request.flush(testData);
       }));
 
-      it('should get customer 1',
+  it('should get customer 1',
     inject([HttpTestingController, CustomerService],
       (mockHttp: HttpTestingController, testService: CustomerService) => {
         // Mock call to HttpContext.
@@ -121,6 +121,30 @@ describe('CustomerService', () => {
         // Fill request response.
         request.flush(testData[0]);
       }));
+
+      it('should get customer John@Doe.Com',
+      inject([HttpTestingController, CustomerService],
+        (mockHttp: HttpTestingController, testService: CustomerService) => {
+          // Mock call to HttpContext.
+          testService.getCustomerByUserName('John@Doe.Com').subscribe(inData => {
+            // Check response data.
+            expect(inData.id).toBe(1);
+            expect(inData.userName).toBe('John@Doe.Com');
+            expect(inData.name).toBe('John Doe');
+            expect(inData.street).toBe('123 A Street');
+            expect(inData.city).toBe('Here');
+            expect(inData.stateID).toBe(1);
+            expect(inData.state).toBeNull();
+            expect(inData.zipCode).toBe(12345);
+          });
+  
+          // Check request data.
+          const request = mockHttp.expectOne(URL.name + 'api/customersapi/byuser/John@Doe.Com');
+          expect(request.request.method).toEqual('GET');
+  
+          // Fill request response.
+          request.flush(testData[0]);
+        }));
 
   afterEach(inject([HttpTestingController], (httpMock: HttpTestingController) => {
     httpMock.verify();
