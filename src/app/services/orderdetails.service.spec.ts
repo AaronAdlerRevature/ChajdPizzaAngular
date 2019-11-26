@@ -132,7 +132,7 @@ describe('OrderdetailsService', () => {
         request.flush(testData[0]);
       }));
 
-  it('should get order detail 1',
+  it('should get order detail for order 2',
     inject([HttpTestingController, OrderdetailsService],
       (mockHttp: HttpTestingController, testService: OrderdetailsService) => {
         // Mock call to HttpContext.
