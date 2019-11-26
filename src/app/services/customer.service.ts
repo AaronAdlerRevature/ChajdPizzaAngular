@@ -25,7 +25,7 @@ export class CustomerService {
 
   postCustomer(c:Customer){
     c.stateID = +c.stateID;
-    return this.client.post(URL.name + 'api/customersapi', c);
+    return this.client.post(URL.name + 'api/customersapi/', c);
   }
 
   putCustomer(c:Customer){
