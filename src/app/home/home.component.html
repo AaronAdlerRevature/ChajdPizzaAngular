@@ -1,0 +1,42 @@
+
+<div class="bs-example" style="width:auto">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Wrapper for carousel items -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img [src]=currentDisplay.imageLink [alt]=currentDisplay.text height="250">
+                <br /><a class="btn btn-info" role="button" [routerLink]=currentDisplay.routeLink>Order Now</a>
+            </div>
+        </div>
+        <!-- Carousel controls -->
+        <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+</div>
+
+<br />
+<br />
+
+<h3>BEST VALUE PIZZAS</h3>
+<div>
+    <div class="row" style="overflow: hidden;">
+        <div class="col-sm-4 bg-success" style="width:30%; float:left;">
+            <img [src]=deals[1].imageLink [alt]=deals[1].text height="150"><br /> Grilled chicken breast, garlic Parmesan white sauce, smoked bacon, tomatoes, provolone and cheese made with 100% real mozzarella.
+            <br /><br /> <a class="btn btn-danger" role="button" [routerLink]=deals[1].routeLink>Order Now</a> |
+        </div>
+        <div class="col-sm-4 bg-info"style="width:30%; float:left;">
+            
+            <img [src]=deals[0].imageLink [alt]=deals[0].text height="150"> <br />Roasted red peppers, fresh baby spinach, fresh onions, fresh mushrooms, tomatoes, black olives, feta, provolone, cheese made with 100% real mozzarella and sprinkled with a garlic herb seasoning.
+            <br /><a class="btn btn-danger" role="button" [routerLink]=deals[0].routeLink>Order Now</a> |
+        </div>
+        <div class="col-sm-4 bg-primary"style="width:30%; float:left;">
+            
+            <img [src]=deals[4].imageLink [alt]=deals[4].text alt="Second Slide" height="150"><br />Grilled chicken breast, garlic Parmesan white sauce, smoked bacon, tomatoes, provolone and cheese made with 100% real mozzarella.
+            <br /> <br /> <a class="btn btn-danger" role="button" [routerLink]=deals[4].routeLink>Order Now</a> |
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<p>test-customer-post works!</p>
+
+
+    <div>
+        <input type="text" [(ngModel)]="customer.name"/>
+    </div>
+    <div>
+        <input type="text" [(ngModel)]="customer.street"/>
+    </div>
+    <div>
+        <input type="text" [(ngModel)]="customer.city"/>
+    </div>
+    <div>
+        <select *ngIf="allStates" [(ngModel)]="customer.stateID">
+            <option *ngFor="let state of allStates" [value]="state.ID" >
+                {{ state.name }}
+            </option>
+        </select>
+    </div>
+    <div>
+        <input type="number" [(ngModel)]="customer.zipCode">
+    </div>
+<br/>
+    <div>
+        <input type="button" (click)="postCustomer()" value="Submit" [disabled]="isSubmitted"/>
+    </div>
+<div *ngIf="isSubmitted === true">
+    <p>
+        New ID: {{ newCustomerID }}
+    </p>
+</div>

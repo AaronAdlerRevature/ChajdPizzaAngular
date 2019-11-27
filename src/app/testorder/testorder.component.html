@@ -1,0 +1,78 @@
+<p>testorder works!</p>
+
+
+<input type="button" value="Create New Order" (click)="createOrder()"/>
+<div *ngIf="isCreatingOrder === true">
+       <ul *ngIf="currentOrder" style="list-style-type: none;">
+           <li>
+               <label>ID: </label>
+               <input type="number" [(ngModel)]=currentOrder.id readonly/>
+           </li>
+           <li>
+               <label>Customer ID: </label>
+               <input type="number" [(ngModel)]=currentOrder.customerId/>
+           </li>
+           <li>
+               <label>Net Price: </label>
+               <input type="number" [(ngModel)]=currentOrder.netPrice/>
+           </li>
+           <li>
+               <label>Is Completed: </label>
+               <input type="checkbox" [(ngModel)]=currentOrder.isCompleted/>
+           </li>
+           <li>
+               <label>Delivery Address: </label>
+               <input type="text" [(ngModel)]=currentOrder.deliveryAddress/>
+           </li>
+       </ul>
+       <input type="button" value="Create Order" (click)="postOrder()"/>
+       <input type="button" value="Close Order View" (click)="clearOrder()"/>
+</div>
+<br/>
+<div *ngIf="allOrders">
+    <input type="button" value="View Order" (click)="viewOrder()"/>
+    <select [(ngModel)]=selectedOrder>
+        <option *ngFor="let order of allOrders" [value]="order.id" >
+            {{ order.id }}
+        </option>
+    </select>
+
+    <div *ngIf="isViewingOrder===true">
+        <ul *ngIf="currentOrder" style="list-style-type: none;">
+            <li>
+                <label>ID: </label>
+                <input type="number" [(ngModel)]=currentOrder.id readonly/>
+            </li>
+            
+            <li>
+                <label>Customer ID: </label>
+                <input type="number" [(ngModel)]=currentOrder.customerId readonly/>
+            </li>
+            <li>
+                <label>Net Price: </label>
+                <input type="number" [(ngModel)]=currentOrder.netPrice/>
+            </li>
+            <li>
+                <label>Is Completed: </label>
+                <input type="checkbox" [(ngModel)]=currentOrder.isCompleted/>
+            </li>
+            <li>
+                <label>Delivery Address: </label>
+                <input type="text" [(ngModel)]=currentOrder.deliveryAddress/>
+            </li>
+        </ul>
+        <input type="button" value="Update Order" (click)="updateOrder()"/>
+        <input type="button" value="Close Order View" (click)="clearOrder()"/>
+        <h3>Order Details</h3>
+        <div *ngIf="orderDetails != null" style="width: 225px;">
+                <ul *ngFor="let item of orderDetails; index as i;">
+                    _____________________________________
+                    <li><em>Order ID:</em><strong>  {{ item.ordersId }}</strong></li>
+                    <li><em>Pizza Size ID:</em><strong>  {{ item.sizeId }}</strong></li>
+                    <li><em>Toppings Requested:</em><strong>  {{ item.toppingsSelected }}</strong></li>
+                    <li>Price: <strong>${{ item.price }}</strong></li>
+                    <li>Item Instructions:  <em>{{ item.specialRequest }}</em></li>
+                </ul>
+        </div>
+    </div>
+</div>
