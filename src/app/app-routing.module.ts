@@ -8,6 +8,7 @@ import { TestCustomerPostComponent } from './test-customer-post/test-customer-po
 import { SpecialorderComponent } from './specialorder/specialorder.component';
 import { TestorderComponent } from './testorder/testorder.component';
 
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'menu', component: MenuComponent },
@@ -15,7 +16,7 @@ const routes: Routes = [
   { path: 'testcustomer', component: TestcustomerComponent},
   { path: 'testcustomerpost', component: TestCustomerPostComponent},
   { path: 'specialorder', component: SpecialorderComponent} ,
-  { path: 'testorder', component: TestorderComponent},
+  { path: 'testorder', component: TestorderComponent}
 ];
 
 @NgModule({

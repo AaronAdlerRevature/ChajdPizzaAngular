@@ -63,5 +63,16 @@
         </ul>
         <input type="button" value="Update Order" (click)="updateOrder()"/>
         <input type="button" value="Close Order View" (click)="clearOrder()"/>
+        <h3>Order Details</h3>
+        <div *ngIf="orderDetails != null" style="width: 225px;">
+                <ul *ngFor="let item of orderDetails; index as i;">
+                    _____________________________________
+                    <li><em>Order ID:</em><strong>  {{ item.ordersId }}</strong></li>
+                    <li><em>Pizza Size ID:</em><strong>  {{ item.sizeId }}</strong></li>
+                    <li><em>Toppings Requested:</em><strong>  {{ item.toppingsSelected }}</strong></li>
+                    <li>Price: <strong>${{ item.price }}</strong></li>
+                    <li>Item Instructions:  <em>{{ item.specialRequest }}</em></li>
+                </ul>
+        </div>
     </div>
 </div>

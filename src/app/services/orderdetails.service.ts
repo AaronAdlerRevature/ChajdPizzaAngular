@@ -19,6 +19,10 @@ export class OrderdetailsService {
     return this.client.get<Orderdetail>(URL.name +'api/orderdetailsapi/' + i);
   }
   
+  getDetailByOrder(i:number){
+    return this.client.get<Orderdetail>(URL.name +'api/orderdetailsapi/DetailsOfOrder/'+i);
+  }
+
   getOrderDetailByOrderID(i:number){
     return this.client.get<Orderdetail>(URL.name +'api/orderdetailsapi/DetailsOfOrder/' + i);
   }
